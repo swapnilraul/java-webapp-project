@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: loksai-eta-deploy
+  name: swappy-eta-deploy
   labels:
-    app: loksai-eta-deploy-lbl
+    app: swappy-eta-deploy-lbl
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: loksai-eta-app
+      app: swappy-eta-app
   template:
     metadata:
       labels:
-        app: loksai-eta-app
+        app: swappy-eta-app
     spec:
       containers:
-      - name: loksai-eta-container
+      - name: swappy-eta-container
         image: swapnilraul/web-apps
         ports:
         - containerPort: 8080
@@ -23,12 +23,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: loksai-eta-np-service
+  name: swappy-eta-np-service
   labels:
-    app: loksai-eta-app
+    app: swappy-eta-app
 spec:
   selector:
-    app: loksai-eta-deploy-lbl
+    app: swappy-eta-deploy-lbl
 
   type: NodePort
   ports:
